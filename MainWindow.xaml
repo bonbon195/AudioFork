@@ -1,0 +1,151 @@
+﻿<Window x:Class="AudioFork.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AudioFork"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800"
+        Background="#212A36"
+        ShowInTaskbar="True">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Ввод"
+               Grid.Column="0"
+               Grid.Row="0"
+               FontWeight="Medium"
+               FontSize="16"
+               Foreground="LightGray"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+        <Label Content="Вывод"
+               Grid.Column="1"
+               Grid.Row="0"
+               FontWeight="Medium"
+               FontSize="16"
+               Foreground="LightGray"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"/>
+
+        <ListBox x:Name="inputDevicesListBox"
+                 Grid.Column="0"
+                 Grid.Row="1"
+                 Margin="6, 0, 6, 0"
+                 Padding="10"
+                 SelectionChanged ="inputDevicesListBox_SelectionChanged"
+                 BorderThickness="0"
+                 d:ItemsSource="{d:SampleData ItemCount=5}"
+                 ItemContainerStyle="{StaticResource DeviceCard}"
+                 >
+            
+            <ListBox.Style>
+                <Style TargetType="ListBox">
+                    <Setter Property="Background" Value="#2b3844"></Setter>
+                </Style>
+            </ListBox.Style>
+            
+            <ListBox.Template>
+                <ControlTemplate TargetType="ListBox">
+
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        CornerRadius="10"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        >
+                        <ItemsPresenter/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#2b3844"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ListBox.Template>
+            
+        </ListBox>
+        
+        <ListBox x:Name="outputDevicesListBox"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 Margin="6, 0, 6, 0"
+                 Padding="10"
+                 SelectionMode="Multiple"
+                 SelectionChanged="outputDevicesListBox_SelectionChanged"
+                 d:ItemsSource="{d:SampleData ItemCount=5}"
+                 BorderThickness="0"
+                 ItemContainerStyle="{StaticResource DeviceCard}"
+                 >
+
+            <ListBox.Style>
+                <Style TargetType="ListBox">
+                    <Setter Property="Background" Value="#2b3844"></Setter>
+                </Style>
+            </ListBox.Style>
+            
+            <ListBox.Template>
+                <ControlTemplate TargetType="ListBox">
+
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        CornerRadius="10"
+                                        Background="{TemplateBinding Background}"
+                                        Padding="{TemplateBinding Padding}"
+                                        >
+                        <ItemsPresenter/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#2b3844"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+        <Button x:Name="inputButton"
+                Content="Начать"
+                Foreground="LightGray"
+                FontSize="14"
+                FontWeight="Medium"
+                Grid.ColumnSpan="2"
+                Grid.Row="2"
+                Margin="0, 10, 0, 0"
+                Click="inputButton_Click"
+                >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#544F6D"></Setter>
+                    <Setter Property="Cursor" Value="Hand"></Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#49455F"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="150"
+                            Height="40"
+                            CornerRadius="5"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"></ContentPresenter>
+                        
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

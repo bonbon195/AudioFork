@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="DeviceCard" 
+        TargetType="ListBoxItem">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#544F6D"></Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#444B60"></Setter>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Focusable" Value="True"></Setter>
+        <Setter Property="Background" Value="#3c4959"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border Background="{TemplateBinding Background}"
+                            Height="50"
+                            CornerRadius="4"
+                            Margin="4"
+                            >
+                        <Label Content="{Binding FriendlyName}"
+                               Padding="10, 0, 10, 0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Foreground="LightGray"
+                               FontSize="12"
+                               FontWeight="Medium"></Label>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
